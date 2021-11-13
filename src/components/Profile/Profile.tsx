@@ -1,19 +1,14 @@
 import React from "react";
 
 import MyPosts from "./MyPosts/MyPosts";
-import Post from "./MyPosts/Post/Post";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 import s from './Profile.module.css';
 
-const Profile = () => {
+const Profile: React.FC<{}> = () => {
     return (
-        <div className={s.content}>
-            <div>
-                <img src='./avatar.jpg' alt='avatar'/>
-            </div>
-            <div>
-                ava + descript
-            </div>
+        <div>
+            <ProfileInfo />
             <MyPosts />
         </div>
     )

@@ -1,20 +1,25 @@
 import React from "react";
 
-import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
-const MyPosts = () => {
+import s from './MyPosts.module.css';
+
+const MyPosts: React.FC<{}> = () => {
     return (
-        <div>
-            My posts
+        <div className={s.postsBlock}>
+            <h3>My posts</h3>
             <div>
-                <textarea></textarea>
-                <button>Add post</button>
+                <div>
+                    <textarea></textarea>
+                </div>
+                <div>
+                    <button>Add post</button>
+                </div>
             </div>
             <div className={s.posts}>
                 <Post message={'Hi, how are you'} countLike={15}/>
                 <Post message={"Its my first post"} countLike={20}/>
-                <Post />
+                <Post message={"Its my second post"} countLike={30}/>
             </div>
         </div>
     )

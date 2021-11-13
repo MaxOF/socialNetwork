@@ -3,10 +3,11 @@
     background-color: bisque;
 }
 
-.item{
-    color: mediumseagreen;
+.item a{
+    color: goldenrod;
+    text-decoration: none;
 }
 
-.item.active {
-    color: goldenrod;
+.active {
+    background-color: palegoldenrod;
 }
