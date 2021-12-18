@@ -2,11 +2,11 @@ import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import s from './Profile.module.css';
-import state, {ProfilePageType} from "../../redux/state";
+import state, {ActionsType, ProfilePageType} from "../../redux/state";
 
 type PropsType = {
     profilePage: ProfilePageType
-    dispatch: (action: any) => void
+    dispatch: (action: ActionsType) => void
     messageForNewPost: string
 }
 

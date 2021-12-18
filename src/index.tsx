@@ -12,6 +12,7 @@ const rerenderEntireTree = (state: RootStateType) => {
             state={state}
             dispatch={store.dispatch.bind(store)}
             messageForNewPost={store.getState().profilePage.messageForNewPost}
+            store={store}
         />,
         document.getElementById('root')
     );
