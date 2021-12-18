@@ -1,11 +1,3 @@
-let onChange = () => {
-    console.log('hello')
-}
-
-export const subscribe = (callback: () => void) => {
-    onChange = callback
-}
-
 export type PostsType = {
     id: number
     message: string
@@ -31,9 +23,21 @@ export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
 }
+export type StoreType = {
+    _state: RootStateType
+    _onChange:  any
+    getState: () => RootStateType
+    _addPost: (postText: string) => void
+    _updateNewPostText: (newText: string) => void
+    subscribe: (observer: (state?: RootStateType) => void) => void
+    dispatch: (action: any) => void
+}
 
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-let state: RootStateType = {
+const store: StoreType = {
+    _state: {
     profilePage : {
         posts: [
             {id: 1, message: 'Its my first post', likesCount: 12},
@@ -63,21 +67,41 @@ let state: RootStateType = {
             {id: 6, name: 'Valera'}
         ]
     }
-}
+},
+    _onChange () {
+        console.log('state changed')
+    },
+    getState() {
+        return this._state
+    },
+    subscribe (observer: (state: RootStateType) => void) {
+        this._onChange = observer
+    },
 
-export const addPost = (postText: string) => {
-    const newPost: PostsType = {
-        id: 5,
-        message: postText,
-        likesCount: 0
+    _addPost () {
+        const newPost: PostsType = {
+            id: 5,
+            message: this._state.profilePage.messageForNewPost,
+            likesCount: 0
+        }
+        this._state.profilePage.posts.push(newPost);
+        this._onChange()
+    },
+    _updateNewPostText (newText: string) {
+        this._state.profilePage.messageForNewPost = newText;
+        this._onChange();
+    },
+
+    dispatch(action) {
+        if(action.type === 'ADD-POST') {
+            this._addPost(action.postText);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT'){
+            this._updateNewPostText(action.newText)
+        }
     }
-    state.profilePage.posts.push(newPost);
-    onChange();
 }
 
-export const updateNewPostText = (newText: string) => {
-    state.profilePage.messageForNewPost = newText;
-    onChange();
-}
+export const addPostActionCreator = () => ({ type: ADD_POST })
+export const updateNewPostTextActionCreator = (text: string) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 
-export default state;
+export default store;
