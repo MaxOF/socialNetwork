@@ -1,18 +1,18 @@
 import React, {ChangeEvent} from "react";
-
 import Post from "./Post/Post";
 import s from './MyPosts.module.css';
 import {
     ActionsType,
     PostsType,
 } from "../../../redux/store";
-import {addPostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
 
 
 type PropsType = {
     allPosts: Array<PostsType>
     dispatch: (action: ActionsType) => void
     messageForNewPost: string
+    updateNewPostText: (newText: string) => void
+    addPost: () => void
 }
 
 const MyPosts = (props: PropsType) => {
@@ -22,13 +22,12 @@ const MyPosts = (props: PropsType) => {
     })
 
 
-    const addPost = () => {
-        props.dispatch(addPostAC());
+    const onAddPost = () => {
+        props.addPost()
     }
     const newTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let newText = e.currentTarget.value
-        let action = updateNewPostTextAC(newText)
-        props.dispatch(action)
+        props.updateNewPostText(newText)
     }
 
     return (
@@ -39,7 +38,7 @@ const MyPosts = (props: PropsType) => {
                     <textarea value={props.messageForNewPost} onChange={newTextChangeHandler}/>
                 </div>
                 <div>
-                    <button onClick={addPost}>Add post</button>
+                    <button onClick={onAddPost}>Add post</button>
                 </div>
             </div>
             <div className={s.posts}>

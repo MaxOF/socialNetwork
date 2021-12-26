@@ -2,6 +2,7 @@ import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {ActionsType, PostsType} from "../../redux/store";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 type PropsType = {
     allPosts: Array<PostsType>
@@ -14,7 +15,7 @@ const Profile = (props: PropsType) => {
     return (
         <div>
             <ProfileInfo />
-            <MyPosts
+            <MyPostsContainer
                 allPosts={props.allPosts}
                 dispatch={props.dispatch}
                 messageForNewPost={props.messageForNewPost}

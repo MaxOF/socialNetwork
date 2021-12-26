@@ -9,6 +9,7 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import './App.css';
 import {ActionsType} from "./redux/store";
 import {ReduxStoreType} from "./redux/redux-store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 type PropsType = {
     dispatch: (action: ActionsType) => void
@@ -26,7 +27,7 @@ const App = (props: PropsType) => {
                 <div className='app-wrapper-content'>
                     <Routes>
                         <Route path='/dialogs' element={
-                            <Dialogs
+                            <DialogsContainer
                                 dialogsItems = {state.DialogsPageReducer.dialogs}
                                 messages={state.DialogsPageReducer.messages}
                                 newMessageBody={state.DialogsPageReducer.newMessageBody}
