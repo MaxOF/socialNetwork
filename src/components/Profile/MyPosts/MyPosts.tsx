@@ -5,10 +5,8 @@ import s from './MyPosts.module.css';
 import {
     ActionsType,
     PostsType,
-    updateNewPostTextActionCreator,
-} from "../../../redux/state";
-
-
+} from "../../../redux/store";
+import {addPostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
 
 
 type PropsType = {
@@ -25,11 +23,12 @@ const MyPosts = (props: PropsType) => {
 
 
     const addPost = () => {
-        props.dispatch({ type: 'ADD-POST' });
+        props.dispatch(addPostAC());
     }
     const newTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let text = e.currentTarget.value
-        props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text })
+        let newText = e.currentTarget.value
+        let action = updateNewPostTextAC(newText)
+        props.dispatch(action)
     }
 
     return (

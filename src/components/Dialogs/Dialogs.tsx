@@ -4,10 +4,12 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 import s from './Dialogs.module.css';
-import {sendMessageCreator, StoreType, updateNewMessageBodyCreator} from "../../redux/state";
+import {ActionsType, StoreType} from "../../redux/store";
+import {sendMessageAC, updateNewMessageAC} from "../../redux/dialogs-reducer";
 
 type PropsType = {
     store: StoreType
+    dispatch: (action: ActionsType) => void
 }
 
 const Dialogs: React.FC<PropsType> = (props) => {
@@ -23,11 +25,14 @@ const Dialogs: React.FC<PropsType> = (props) => {
     let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator())
+        debugger
+        props.store.dispatch(sendMessageAC())
+
     }
     let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        debugger
         let body = e.currentTarget.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body))
+        props.store.dispatch(updateNewMessageAC(body))
     }
 
     return (

@@ -7,7 +7,7 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 
 import './App.css';
-import {ActionsType, RootStateType, StoreType} from "./redux/state";
+import {ActionsType, RootStateType, StoreType} from "./redux/store";
 
 type PropsType = {
     state: RootStateType
@@ -24,7 +24,7 @@ const App = (props: PropsType) => {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/dialogs' element={ <Dialogs store={props.store}/>}/>
+                        <Route path='/dialogs' element={ <Dialogs store={props.store} dispatch={props.dispatch}/>}/>
                         <Route path='/profile' element={<Profile
                             profilePage={props.state.profilePage}
                             dispatch={props.dispatch}
