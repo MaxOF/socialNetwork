@@ -1,10 +1,10 @@
 import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ActionsType, ProfilePageType} from "../../redux/store";
+import {ActionsType, PostsType} from "../../redux/store";
 
 type PropsType = {
-    profilePage: ProfilePageType
+    allPosts: Array<PostsType>
     dispatch: (action: ActionsType) => void
     messageForNewPost: string
 }
@@ -15,7 +15,7 @@ const Profile = (props: PropsType) => {
         <div>
             <ProfileInfo />
             <MyPosts
-                posts={props.profilePage.posts}
+                allPosts={props.allPosts}
                 dispatch={props.dispatch}
                 messageForNewPost={props.messageForNewPost}
             />

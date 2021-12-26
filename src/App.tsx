@@ -7,16 +7,17 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 
 import './App.css';
-import {ActionsType, RootStateType, StoreType} from "./redux/store";
+import {ActionsType} from "./redux/store";
+import {ReduxStoreType} from "./redux/redux-store";
 
 type PropsType = {
-    state: RootStateType
     dispatch: (action: ActionsType) => void
-    messageForNewPost: string
-    store: StoreType
+    store: ReduxStoreType
 }
 
 const App = (props: PropsType) => {
+
+    const state = props.store.getState()
         return (
         <div className='app-wrapper'>
             <Router>
@@ -24,12 +25,22 @@ const App = (props: PropsType) => {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/dialogs' element={ <Dialogs store={props.store} dispatch={props.dispatch}/>}/>
-                        <Route path='/profile' element={<Profile
-                            profilePage={props.state.profilePage}
+                        <Route path='/dialogs' element={
+                            <Dialogs
+                                dialogsItems = {state.DialogsPageReducer.dialogs}
+                                messages={state.DialogsPageReducer.messages}
+                                newMessageBody={state.DialogsPageReducer.newMessageBody}
+                                dispatch={props.dispatch}
+                            />}
+                        />
+                        <Route path='/profile' element={
+                            <Profile
+                            allPosts={state.ProfilePageReducer.posts}
+                            messageForNewPost={state.ProfilePageReducer.messageForNewPost}
                             dispatch={props.dispatch}
-                            messageForNewPost={props.messageForNewPost}
-                        />}/>
+
+                        />}
+                        />
 
                     </Routes>
                 </div>

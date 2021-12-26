@@ -10,14 +10,14 @@ import {addPostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
 
 
 type PropsType = {
-    posts: Array<PostsType>
+    allPosts: Array<PostsType>
     dispatch: (action: ActionsType) => void
     messageForNewPost: string
 }
 
 const MyPosts = (props: PropsType) => {
     console.log(props.messageForNewPost)
-    let postsElements = props.posts.map((p) => {
+    let postsElements = props.allPosts.map((p) => {
         return <Post id={p.id} message={p.message} likesCount={p.likesCount}/>
     })
 
