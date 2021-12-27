@@ -32,7 +32,7 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionsT
                 message: state.messageForNewPost,
                 likesCount: 0
             }
-            return {...state, posts: [newPost, ...state.posts], messageForNewPost: ""}
+            return {...state, posts: [...state.posts, newPost], messageForNewPost: ""}
         case 'UPDATE_NEW_POST_TEXT':
             return {...state, messageForNewPost: action.newText}
         default:

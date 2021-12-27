@@ -45,7 +45,6 @@ const dialogsReducer = (state: InitialStateType = initialState, action: ActionsT
         case 'UPDATE_NEW_MESSAGE_BODY':
             return {...state, newMessageBody: action.body}
         case 'SEND_MESSAGE':
-            debugger
             const body: MessagesType = {id: 10, message: state.newMessageBody}
             return {...state, messages: [...state.messages, body], newMessageBody: ''}
         default:
