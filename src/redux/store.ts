@@ -45,7 +45,7 @@ export type ActionsType =
 
 
 
-const store: StoreType = {
+let store: StoreType = {
     _state: {
     profilePage : {
         posts: [

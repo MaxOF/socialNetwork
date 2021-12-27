@@ -4,26 +4,19 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 import s from './Dialogs.module.css';
-import {ActionsType, DialogsType, MessagesType} from "../../redux/store";
+import {DialogsPropsType} from "./DialogsContainer";
 
-type PropsType = {
-    dialogsItems: Array<DialogsType>
-    messages: Array<MessagesType>
-    newMessageBody: string
-    dispatch: (action: ActionsType) => void
-    updateNewMessageBody: (body: string) => void
-    sendMessage: () => void
-}
 
-export const Dialogs = (props: PropsType) => {
+export const Dialogs = (props: DialogsPropsType) => {
 
-    let dialogsElements = props.dialogsItems.map ((d) => {
+    let state = props.dialogsPage
+    let dialogsElements = state.dialogs.map ((d) => {
         return <DialogItem name={d.name} id = {d.id} />
     })
-    let messagesElements = props.messages.map((m) => {
+    let messagesElements = state.messages.map((m) => {
            return <Message message={m.message} id ={m.id}/>
         })
-    let newMessageBody = props.newMessageBody;
+    let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
         props.sendMessage()

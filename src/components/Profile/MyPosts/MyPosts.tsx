@@ -2,22 +2,19 @@ import React, {ChangeEvent} from "react";
 import Post from "./Post/Post";
 import s from './MyPosts.module.css';
 import {
-    ActionsType,
-    PostsType,
+    ProfilePageType
 } from "../../../redux/store";
 
 
 type PropsType = {
-    allPosts: Array<PostsType>
-    dispatch: (action: ActionsType) => void
-    messageForNewPost: string
+    profilePage: ProfilePageType
     updateNewPostText: (newText: string) => void
     addPost: () => void
 }
 
 const MyPosts = (props: PropsType) => {
-    console.log(props.messageForNewPost)
-    let postsElements = props.allPosts.map((p) => {
+    let state = props.profilePage
+    let postsElements = state.posts.map((p) => {
         return <Post id={p.id} message={p.message} likesCount={p.likesCount}/>
     })
 
@@ -35,7 +32,7 @@ const MyPosts = (props: PropsType) => {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea value={props.messageForNewPost} onChange={newTextChangeHandler}/>
+                    <textarea value={state.messageForNewPost} onChange={newTextChangeHandler}/>
                 </div>
                 <div>
                     <button onClick={onAddPost}>Add post</button>
