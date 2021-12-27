@@ -7,16 +7,12 @@ import App from './App';
 import './index.css';
 
 
-const rerenderEntireTree = () => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <App/>
-        </Provider>,
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
 
-        document.getElementById('root')
-    );
-}
+    document.getElementById('root')
+);
 
-rerenderEntireTree();
 
-store.subscribe(rerenderEntireTree)
