@@ -7,9 +7,10 @@ import Profile from "./components/Profile/Profile";
 
 
 import './App.css';
-import {ActionsType} from "./redux/store";
-import {ReduxStoreType} from "./redux/redux-store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
+
+
 
 const App = () => {
 
@@ -21,13 +22,12 @@ const App = () => {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/dialogs' element={
-                            <DialogsContainer />}
+                        <Route path='/dialogs' element={<DialogsContainer />}
                         />
-                        <Route path='/profile' element={
-                            <Profile />}
+                        <Route path='/profile' element={<Profile />}
                         />
-
+                        <Route path='/users' element={<UsersContainer />}
+                        />
                     </Routes>
                 </div>
             </Router>
