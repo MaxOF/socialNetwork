@@ -2,8 +2,14 @@ type LocationType = {
     city: string
     country: string
 }
+type PhotoType = {
+    small: string
+    large: string
+}
 
 export type UserType = {
+    name: string;
+    photos: PhotoType;
     id: number
     photoUrl: string
     followed: boolean
@@ -20,12 +26,7 @@ export type setUsersType = ReturnType<typeof setUsersAC>
 type ActionsType = followType | unfollowType | setUsersType
 
 let initialState = {
-    users: [
-        {id: 1, photoUrl: './cat.jpg', followed: false, fullName: 'Dmitry', status: 'I am a boss', location: {city: 'Minsk', country: 'Belarus'}},
-        {id: 2, photoUrl: './cat.jpg', followed: true, fullName: 'Sasha', status: 'I am a boss too', location: {city: 'Moscow', country: 'Russia'}},
-        {id: 3, photoUrl: './cat.jpg', followed: false, fullName: 'Andrew', status: 'I am a boss too', location: {city: 'Kiev', country: 'Ukraine'}},
-        {id: 4, photoUrl: './cat.jpg', followed: true, fullName: 'Alexander', status: 'I am a boss too', location: {city: 'Kazan', country: 'Russia'}},
-    ] as Array<UserType>
+    users: [] as Array<UserType>
 };
 
 export const usersReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
