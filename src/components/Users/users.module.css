@@ -3,5 +3,18 @@
     height: 80px;
 }
 .selectedPage{
-    font-weight: bold;
+    background-color: #4CAF50;
+    padding: 8px 16px;
+    color: white;
+}
+.pagination {
+    display: inline-block;
+}
+.pages {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+.pages:hover{
+    background-color: white;
 }
