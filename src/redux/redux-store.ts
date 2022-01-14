@@ -14,4 +14,7 @@ export type ReduxStoreType = typeof store
 
 export const store = createStore(rootReducer);
 
+// @ts-ignore
+window.store = store
+
 export default store;

@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
-import {Dispatch} from "redux";
 import {
     follow, setCurrentPage, setTotalUsersCount, setUsers,
     toggleIsFetching, unfollow,
@@ -11,6 +10,7 @@ import {
 import axios from "axios";
 import Users from "./Users";
 import Preloader from "../common/preloader/Preloader";
+import ContentLoader from 'react-content-loader'
 
 
 type MapStatePropsType = {
@@ -57,7 +57,22 @@ class UsersContainer extends React.Component<UsersPropsType> {
     render() {
         return <>
             {/*React skeleton ? instead img*/}
-            {this.props.isFetching ? <Preloader/> : null}
+            {this.props.isFetching ? (
+                <ContentLoader
+                    speed={2}
+                    width={400}
+                    height={250}
+                    viewBox="0 0 400 250"
+                    backgroundColor="#f3f3f3"
+                    foregroundColor="#ecebeb"
+                >
+                    <rect x="6" y="176" rx="3" ry="3" width="105" height="26" />
+                    <rect x="6" y="114" rx="3" ry="3" width="90" height="26" />
+                    <circle cx="41" cy="42" r="40" />
+                    <rect x="6" y="85" rx="3" ry="3" width="66" height="26" />
+                    <rect x="6" y="145" rx="3" ry="3" width="145" height="26" />
+                </ContentLoader>
+            ) : null}
             <Users
                 totalUsersCount={this.props.totalUsersCount}
                 pageSize={this.props.pageSize}

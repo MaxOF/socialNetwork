@@ -2,12 +2,15 @@ import React from "react";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
+type PropsType = {
+    profile: null
+}
 
+const Profile = (props: PropsType) => {
 
-const Profile = () => {
     return (
         <div>
-            <ProfileInfo />
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer/>
         </div>
     )
