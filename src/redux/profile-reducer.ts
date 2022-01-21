@@ -21,7 +21,27 @@ let initialState = {
         {id: 6, message: 'Yo', likesCount: 11}
     ] as Array<PostsType>,
     messageForNewPost: '',
-    profile: null
+    profile: {
+        aboutMe: "Good man",
+        contacts: {
+            facebook: "facebook.com",
+            website: null,
+            vk: "vk.com",
+            twitter: "https://twitter.com",
+            instagram: "instagra.com",
+            youtube: null,
+            github: "github.com",
+            mainLink: null
+        },
+        lookingForAJob: true,
+        lookingForAJobDescription: "не ищу, а дурачусь",
+        fullName: "samurai dimych",
+        userId: '21656',
+        photos: {
+            small: "https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0",
+            large: "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0"
+        }
+    }
 };
 
 const profileReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {

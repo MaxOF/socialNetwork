@@ -4,20 +4,42 @@ import axios from "axios";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
 import {setUserProfile} from "../../redux/profile-reducer";
-import { RouteProps, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
+
+export type ProfileType = {
+    aboutMe: string
+    "contacts": {
+        "facebook": string,
+        "website": null,
+        "vk": string,
+        "twitter": string,
+        "instagram": string,
+        "youtube": null,
+        "github": string,
+        "mainLink": null
+    },
+    "lookingForAJob": boolean,
+    "lookingForAJobDescription": string,
+    "fullName": string,
+    "userId": string,
+    "photos": {
+        "small": string,
+        "large": string
+    }
+}
 
 type PathParamsType = {
-    params:{
+    params: {
         userId: string
     }
 }
 
 type MapStatePropsType = {
-    profile: any
+    profile: ProfileType
 }
 type MapDispatchPropsType = {
-    setUserProfile: (profile: any) => void
+    setUserProfile: (profile: ProfileType) => void
 }
 type OwnPropsType = MapStatePropsType & MapDispatchPropsType
 type PropsType = PathParamsType & OwnPropsType
@@ -43,13 +65,13 @@ class ProfileContainer extends React.Component<PropsType> {
     }
 
 }
+
 const withRouter = (WrappedComponent: typeof React.Component) => {
     return (props: object) => {
         const params = useParams()
-        console.log(params)
         return (
             <WrappedComponent {...props}
-                params={params}
+                              params={params}
             />
         );
     }
@@ -61,25 +83,3 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => ({
 let WithUrlDataContainerComponent = withRouter(ProfileContainer)
 
 export default connect(mapStateToProps, {setUserProfile})(WithUrlDataContainerComponent);
-
-
-// Type for profile
-// "aboutMe": "я круто чувак 1001%",
-//     "contacts": {
-//     "facebook": "facebook.com",
-//         "website": null,
-//         "vk": "vk.com/dimych",
-//         "twitter": "https://twitter.com/@sdf",
-//         "instagram": "instagra.com/sds",
-//         "youtube": null,
-//         "github": "github.com",
-//         "mainLink": null
-// },
-// "lookingForAJob": true,
-//     "lookingForAJobDescription": "не ищу, а дурачусь",
-//     "fullName": "samurai dimych",
-//     "userId": 2,
-//     "photos": {
-//     "small": "https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0",
-//         "large": "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0"
-// }

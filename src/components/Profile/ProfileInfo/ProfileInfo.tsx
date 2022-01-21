@@ -2,9 +2,10 @@ import React from "react";
 
 import s from './ProfileInfo.module.css';
 import Preloader from "../../common/preloader/Preloader";
+import {ProfileType} from "../ProfileContainer"
 
 type PropsType = {
-    profile: any
+    profile: ProfileType
 }
 
 const ProfileInfo = (props: PropsType) => {
@@ -14,10 +15,10 @@ const ProfileInfo = (props: PropsType) => {
     return (
         <div>
             <div>
-                <img src='./avatar.jpg' alt='avatar'/>
+                <img src='./ava.jpg' alt='avatar'/>
             </div>
             <div className={s.descriptionBlock}>
-                <img src={props.profile.photos.large}/>
+                <img src={props.profile.photos.large} alt='large photo'/>
                 ava + descript
             </div>
         </div>

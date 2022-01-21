@@ -1,9 +1,10 @@
 import React from "react";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import {ProfileType} from "./ProfileContainer";
 
 type PropsType = {
-    profile: null
+    profile: ProfileType
 }
 
 const Profile = (props: PropsType) => {

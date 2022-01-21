@@ -9,7 +9,6 @@ import {
 
 import axios from "axios";
 import Users from "./Users";
-import Preloader from "../common/preloader/Preloader";
 import ContentLoader from 'react-content-loader'
 
 
