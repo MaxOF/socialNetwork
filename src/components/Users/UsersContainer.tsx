@@ -56,10 +56,9 @@ class UsersContainer extends React.Component<UsersPropsType> {
 
     render() {
         return <>
-            {/*React skeleton ? instead img*/}
             {this.props.isFetching ? (
                 <ContentLoader
-                    speed={2}
+                    speed={1}
                     width={400}
                     height={250}
                     viewBox="0 0 400 250"
