@@ -14,9 +14,10 @@ type MapDispatchPropsType = {
     setAuthUserData: (userId: number | null, email: string | null, login: string | null) => void
 }
 
-export type UsersPropsType = MapStatePropsType & MapDispatchPropsType
+type OwnPropsType = MapStatePropsType & MapDispatchPropsType
 
-class HeaderContainer extends React.Component<UsersPropsType> {
+
+class HeaderContainer extends React.Component<OwnPropsType> {
 
     componentDidMount() {
         //здесь должен будет быть тоггл (посмотреть как заюзать один редьюсер в двух компонентах)
@@ -37,6 +38,8 @@ class HeaderContainer extends React.Component<UsersPropsType> {
        return <Header isAuth={this.props.isAuth} login={this.props.login} />
     }
 }
+
+
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     isAuth: state.auth.isAuth,

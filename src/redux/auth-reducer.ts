@@ -19,7 +19,8 @@ export const authReducer = (state = initialState, action: ActionsType): InitialS
         case 'SET_USER_DATA':
             return {
                 ...state,
-                ...action.payload
+                ...action.data,
+                isAuth: true
             }
         default:
             return state
@@ -29,7 +30,7 @@ export const authReducer = (state = initialState, action: ActionsType): InitialS
 export type setAuthUserDataType = ReturnType<typeof setAuthUserData>
 export const setAuthUserData = (userId: number | null, email: string | null, login: string | null) => ({
     type: 'SET_USER_DATA',
-    payload: {
+    data: {
         userId,
         email,
         login
