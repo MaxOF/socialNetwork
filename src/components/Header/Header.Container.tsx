@@ -21,6 +21,7 @@ class HeaderContainer extends React.Component<OwnPropsType> {
 
     componentDidMount() {
         //здесь должен будет быть тоггл (посмотреть как заюзать один редьюсер в двух компонентах)
+        //заюзать DAL
         axios.get(
             `https://social-network.samuraijs.com/api/1.0/auth/me`, {
                 withCredentials: true
