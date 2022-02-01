@@ -1,3 +1,7 @@
+import {Dispatch} from "redux";
+import { usersAPI } from "../api/api";
+import {ProfileType} from "../components/Profile/ProfileContainer";
+
 export type PostsType = {
     id: number
     message: string
@@ -70,10 +74,19 @@ export const updateNewPostTextAC = (newText: string) => ({
     type: 'UPDATE_NEW_POST_TEXT',
     newText: newText
 }) as const
-export const setUserProfile = (profile: any) => ({
+//change profile type
+export const setUserProfile = (profile: ProfileType) => ({
     type: 'SET_USER_PROFILE',
     profile
 }) as const
-
+//check the type of userID string or number
+export const getUserProfile = (userId: string) => {
+    return (dispatch: Dispatch) => {
+        usersAPI.getUserProfile(userId)
+            .then(response => {
+                dispatch(setUserProfile(response.data))
+            })
+    }
+}
 
 export default profileReducer;

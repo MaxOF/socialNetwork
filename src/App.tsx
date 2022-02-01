@@ -27,6 +27,8 @@ const App = () => {
                         />
                         <Route path='/users' element={<UsersContainer />}
                         />
+                        <Route path='/login' element={<UsersContainer />}
+                        />
                     </Routes>
                 </div>
             </Router>
