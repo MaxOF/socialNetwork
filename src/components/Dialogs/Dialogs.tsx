@@ -5,16 +5,11 @@ import Message from "./Message/Message";
 
 import s from './Dialogs.module.css';
 import {DialogsPropsType} from "./DialogsContainer";
-import {useNavigate} from "react-router-dom";
+
 
 
 export const Dialogs = (props: DialogsPropsType) => {
 
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        if (!props.isAuth) navigate('/login')
-    }, [])
 
     let state = props.dialogsPage
     let dialogsElements = state.dialogs.map ((d) => {

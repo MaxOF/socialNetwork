@@ -5,9 +5,6 @@ import {
     follow,
     getUsers,
     setCurrentPage,
-    setTotalUsersCount,
-    setUsers,
-    toggleIsFetching,
     toggleIsFollowingProgress,
     unfollow,
     UserType
@@ -15,6 +12,7 @@ import {
 
 import Users from "./Users";
 import ContentLoader from 'react-content-loader'
+import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 
 
@@ -91,8 +89,9 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
+let withRedirect = WithAuthRedirect(UsersContainer)
 
 export default connect(mapStateToProps, {
         follow, unfollow, setCurrentPage,
     toggleIsFollowingProgress, getUsers
-})(UsersContainer);
+})(withRedirect);
