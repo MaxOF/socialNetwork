@@ -90,8 +90,6 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
-// let withRedirect = WithAuthRedirect(UsersContainer)
-
 export default compose<React.ComponentType>(
     WithAuthRedirect,
     connect(mapStateToProps, {
