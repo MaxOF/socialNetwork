@@ -1,7 +1,6 @@
 import {Dispatch} from "redux";
-import {authAPI, usersAPI} from "../api/api";
-import {toggleIsFollowingProgress, unfollowSuccess} from "./users-reducer";
-import axios from "axios";
+import {authAPI} from "../api/api";
+
 
 type InitialStateType = {
     userId: number | null
