@@ -6,6 +6,10 @@ type PropsType = {
     status: string
     updateStatus: (status: string) => void
 }
+type PrevStateType = {
+    editMode: boolean
+    status: string
+}
 
 class ProfileStatus extends React.Component<PropsType, any> {
 
@@ -24,6 +28,14 @@ class ProfileStatus extends React.Component<PropsType, any> {
     }
     onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
         this.setState({status: e.currentTarget.value})
+    }
+
+    componentDidUpdate(prevProps: PropsType, prevState: PrevStateType) {
+        if(prevProps.status !== this.props.status){
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
 
     render() {
