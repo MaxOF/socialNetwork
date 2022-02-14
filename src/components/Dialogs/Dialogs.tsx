@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
@@ -18,17 +18,13 @@ export const Dialogs = (props: DialogsPropsType) => {
     let messagesElements = state.messages.map((m) => {
         return <Message message={m.message} id={m.id}/>
     })
-    let newMessageBody = state.newMessageBody;
 
-    let onSendMessageClick = () => {
-        props.sendMessage()
+
+    let addMessage = (values: FormDataType) => {
+        console.log(values)
+        props.sendMessage(values.newMessageBody)
 
     }
-    let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let body = e.currentTarget.value;
-        props.updateNewMessageBody(body)
-    }
-
 
     return (
         <div className={s.dialogs}>
@@ -37,18 +33,19 @@ export const Dialogs = (props: DialogsPropsType) => {
             </div>
             <div className={s.messages}>
                 <div>{messagesElements}</div>
+                <AddMessageFormRedux onSubmit={addMessage} />
             </div>
         </div>
     )
 }
 type FormDataType = {
-    onMessageBody: string
+    newMessageBody: string
 }
 export const AddMessageForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component="textarea" name="onMessageBody" placeholder="Enter your message" />
+                <Field component="textarea" name="newMessageBody" placeholder="Enter your message" />
             </div>
             <div>
                 <button>Send</button>
