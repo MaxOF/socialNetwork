@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import Post from "./Post/Post";
 import s from './MyPosts.module.css';
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
