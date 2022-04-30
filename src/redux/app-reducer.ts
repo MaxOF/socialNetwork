@@ -1,4 +1,4 @@
-import {Dispatch} from "redux";
+import {getAuthUserData} from "./auth-reducer";
 
 
 type InitialStateType = {
@@ -27,6 +27,11 @@ export const setInitialized = () => ({
     type: 'SET_INITIALIZED'
 }) as const
 
-export const initializeApp = () => (dispatch: Dispatch) => {
+export const initializeApp = () => (dispatch: any) => {
+    let promise = dispatch(getAuthUserData())
+
+    promise.then(() => {
+        dispatch(setInitialized())
+    })
 
 }

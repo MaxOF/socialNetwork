@@ -9,18 +9,24 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/Header.Container";
 import Login from "./components/Login/Login";
-import {getAuthUserData} from "./redux/auth-reducer";
+import {initializeApp} from "./redux/app-reducer";
+import {useSelector} from "react-redux";
+import {AppStateType} from "./redux/redux-store";
+import Preloader from "./components/common/preloader/Preloader";
 
 
 const App = () => {
 
+    const initialized = useSelector<AppStateType, boolean>(state => state.app.initialized)
+
     useEffect(() => {
-        getAuthUserData()
+        initializeApp()
     }, [])
 
     return (
         <div className='app-wrapper'>
-            <Router>
+            {!initialized
+                ? <Router>
                 <HeaderContainer/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
@@ -36,6 +42,7 @@ const App = () => {
                     </Routes>
                 </div>
             </Router>
+                : <Preloader />}
         </div>
     );
 
