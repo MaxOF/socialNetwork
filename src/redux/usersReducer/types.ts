@@ -1,7 +1,7 @@
 import {Nullable} from "../../api/api";
 import {BaseThunkType, InferActionTypes} from "../store";
 import {initialUsersState} from "./users-reducer";
-import {UserActions} from "./usersActions";
+import {UserActions} from "./actions/usersActions";
 
 
 export type ThunkUsersType = BaseThunkType<ActionUsersTypes>
