@@ -1,6 +1,7 @@
 import axios from "axios";
 import {ReactElement} from "react";
 import {UserType} from "../redux/usersReducer/types";
+import {PhotosType, ProfileType} from "../redux/profileReducer/types";
 
 
 const instance = axios.create({
@@ -30,28 +31,67 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
-    getUserProfile(userId: string) {
-        return instance.get(`profile/` + userId)
+    getProfile(userId: string) {
+        const endpoint = `profile/${userId}`
+        return instance.get<ProfileType>(endpoint)
+            .then(res => res.data)
     },
     getStatus(userId: string) {
-        return instance.get(`profile/status/` + userId)
+        const endpoint = `profile/status/${userId}`
+        return instance.get<string>(endpoint)
+            .then(res => res.data)
     },
     updateStatus(status: string) {
-        return instance.put(`profile/status`, {status})
+        debugger
+        const endpoint = `profile/status`
+        return instance.put<APIResponseType>(endpoint, {status})
+            .then(res => res.data)
+    },
+    savePhoto(photoFile: File) {
+        const endpoint = `profile/photo`
+        const formData = new FormData()
+        formData.append("image", photoFile)
+        return instance.put<APIResponseType<SavePhotoResponseDataType>>(endpoint, formData, {
+            headers: {
+                "Content-Type": 'multipart/form-data'
+            }
+        })
+            .then(res => res.data)
+    },
+    saveProfile(profile: ProfileType) {
+        const endpoint = `profile`
+        return instance.put<APIResponseType>(endpoint, profile).then(res => res.data)
     },
 }
 
 export const authAPI = {
-    me() {
-        return instance.get(`auth/me`)
+    getAuth() {
+        const endpoint = `auth/me`;
+        return instance.get<APIResponseType<MeResponseType>>(endpoint)
+            .then(res => res.data)
     },
-    login(email: string, password: string, rememberMe: boolean = false) {
-        return instance.post(`auth/login`, {email, password, rememberMe})
+    login(email: string, password: string, rememberMe: boolean = false, captcha: Nullable<string> = null) {
+        const endpoint = `auth/login`;
+        return instance.post<APIResponseType<LoginResponseDataType>>(endpoint, {email, password, rememberMe, captcha})
+            .then(res => res.data)
     },
     logout() {
-        return instance.delete(`auth/login`)
-    }
+        const endpoint = `auth/login`;
+        return instance.delete<APIResponseType>(endpoint)
+            .then(res => res.data)
+    },
 }
+
+export const securityApi = {
+    getCaptchaUrl() {
+        const endpoint = `security/get-captcha-url`
+        return instance.get<captchaType>(endpoint)
+            .then(res => res.data)
+    },
+}
+
+
+// General Types>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 export type Nullable<T> = T | null
 export type ReturnComponentType = Nullable<ReactElement>;
@@ -73,4 +113,24 @@ export type GetItemType = {
     items: Array<UserType>
     totalCount: number
     error: Nullable<string>
+}
+
+
+//Profile types >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export type SavePhotoResponseDataType = {
+    photos: PhotosType
+}
+//Captcha types >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export type captchaType = {
+    url: string
+}
+//Auth types >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export type MeResponseType = {
+    id: string
+    email: string
+    login: string
+}
+
+export type LoginResponseDataType = {
+    userId: number
 }

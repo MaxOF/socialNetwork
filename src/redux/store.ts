@@ -1,5 +1,5 @@
 import {Action, applyMiddleware, combineReducers, createStore} from "redux";
-import profileReducer from "./profile-reducer";
+import profileReducer from "./profileReducer/profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import {usersReducer} from "./usersReducer/users-reducer";
 import {authReducer} from "./auth-reducer";
