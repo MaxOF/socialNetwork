@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Loading.module.scss';
-import {ReturnComponentType} from "../../types/ReturnComponentType";
+import {ReturnComponentType} from "../../api/api";
+
 
 export const Loading = (): ReturnComponentType => {
 

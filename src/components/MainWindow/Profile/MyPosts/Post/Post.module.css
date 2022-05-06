@@ -1,0 +1,177 @@
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #dcb87e;
+    margin-bottom: 5px;
+    border: 3px outset;
+    border-radius: 10px;
+}
+
+.itemText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    padding-top: 8px;
+    text-align: left;
+    font-size: 24px;
+    font-family: 'Pangolin', cursive;
+    font-weight: 700;
+}
+
+.postAvatar {
+    width: 15%;
+    min-width: 90px;
+}
+
+.postAvatar img {
+    margin: 10px 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: outset 4px;
+}
+
+.postAvatar img:hover {
+    border: outset 4px #905e1c;
+}
+
+.likeCounter {
+    font-size: 20px;
+}
+
+.likeCounter:hover {
+    color: #fff;
+}
+
+.notActive {
+    margin-left: 5px;
+    color: #fff;
+}
+
+.active {
+    color: red;
+    margin-left: 5px;
+}
+
+.activeBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    padding: 10px 0 0 0;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.fingerUp:hover {
+    color: #fff;
+}
+
+.reaction {
+    margin-left: 5px;
+}
+
+.form__btn {
+    display: flex;
+    justify-content: center;
+
+    margin: 10px auto 30px;
+    text-align: center;
+    width: 120px;
+    height: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #601313;
+}
+
+.form__btn:hover {
+    opacity: .9;
+    color: #fff;
+}
+
+.form__btn button {
+    border: none;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.delete__btn {
+    font-size: 30px;
+    margin-right: 20px;
+    background-color: #b2a583;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 4px outset #fff;
+}
+
+.delete__btn:hover {
+    background-color: #a69971;
+    border: 4px outset #a8792f;
+}
+
+@media (max-width: 750px) {
+
+    .postAvatar img {
+        width: 60px;
+        height: 60px;
+        border: outset 3px;
+    }
+
+    .itemText {
+        font-size: 22px;
+    }
+
+    .likeCounter {
+        font-size: 16px;
+    }
+
+    .activeBlock {
+        width: 150px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .postAvatar img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .itemText {
+        font-size: 14px;
+    }
+
+
+    .likeCounter {
+        font-size: 12px;
+    }
+
+    .activeBlock {
+        width: 100px;
+    }
+
+    .delete__btn {
+        font-size: 17px;
+        margin-right: 10px;
+        border: 3px outset #ffffff;
+    }
+
+    .delete__btn:hover {
+        border: 3px outset #a8792f;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .likeCounter {
+        font-size: 10px;
+    }
+
+}

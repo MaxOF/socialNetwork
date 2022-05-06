@@ -4,16 +4,21 @@ import style from './App.module.scss';
 import Navbar from "./components/Navbar/Navbar";
 
 import './App.module.scss';
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-
-import ProfileContainer from "./components/Profile/ProfileContainer";
 
 import Login from "./components/Login/Login";
-import {initializeApp} from "./redux/appReducer/app-reducer";
 import {connect, Provider} from "react-redux";
 import {AppStateType, store} from "./redux/store";
-import Preloader from "./components/common/preloader/Preloader";
-import {Loading} from "./common";
+
+import {Loading, Preloader} from "./common";
+import {initializeApp} from "./redux/appReducer/thunks/thunks";
+import {getInitializedAppSelector} from "./selectors/selectors";
+import Header from "./components/Header/Header";
+import News from "./components/MainWindow/News/News";
+import UsersPage from "./components/MainWindow/Users/UsersPage";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
+import Footer from "./components/Footer/Footer";
+import ProfileContainer from "./components/MainWindow/Profile/ProfileContainer";
+import DialogsContainer from "./components/MainWindow/Dialogs/DialogsContainer";
 
 
 export enum PATH {
@@ -58,7 +63,6 @@ class App extends React.Component<AppContainerType, AppContainerType> {
                         <Route path={PATH.USERS} element={<UsersPage/>}/>
                         <Route path={PATH.NEWS} element={<News/>}/>
                         <Route path={PATH.LOGIN} element={<Login/>}/>
-                        <Route path={PATH.CHAT} element={<ChatPage/>}/>
                         <Route path={PATH.PAGE_NOTE_FOUND} element={<PageNotFound/>}/>
                     </Routes>
                 </div>

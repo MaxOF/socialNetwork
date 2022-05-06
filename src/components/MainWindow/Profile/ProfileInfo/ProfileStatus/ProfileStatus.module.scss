@@ -1,0 +1,79 @@
+
+.main {
+
+  @media screen and (max-width: 550px) {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  h3:hover {
+    color: #333;
+  }
+
+  .statusText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 300px;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Luckiest Guy', cursive;
+
+    @media screen and (max-width: 550px) {
+      width: 250px;
+      font-size: 22px;
+    }
+
+    .status__text {
+      cursor: pointer;
+      font-size: 18px;
+      font-family: 'Pangolin', cursive;
+      text-align: left;
+
+      @media screen and (max-width: 550px) {
+        font-size: 16px;
+      }
+
+      &:hover {
+        color: #333;
+      }
+
+    }
+
+    .status__pencil:hover {
+      color: #a8792f;
+    }
+
+  }
+
+  .activeInput {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 300px;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Luckiest Guy', cursive;
+
+    @media screen and (max-width: 550px) {
+      width: 250px;
+      font-size: 22px;
+    }
+
+    input {
+      outline: none;
+      border: 2px solid #dcb87e;
+      border-radius: 5px;
+      width: 300px;
+      height: 30px;
+
+      @media screen and (max-width: 800px) {
+        width: 240px;
+      }
+
+    }
+
+  }
+
+}

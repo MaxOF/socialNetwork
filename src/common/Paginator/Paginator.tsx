@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./Paginator.module.scss"
 import cn from 'classnames'
-import {ReturnComponentType} from "../../types/ReturnComponentType";
+import {ReturnComponentType} from "../../api/api";
 
 export const Paginator: React.FC<UsersPropsType> = ({
                                                         totalItemsCount,

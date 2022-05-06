@@ -1,38 +1,58 @@
-import React from "react";
+import React from 'react';
+import style from "./Navbar.module.scss"
 import {NavLink} from "react-router-dom";
+import {ReturnComponentType} from "../../api/api";
+import {PATH} from "../../App";
 
-import s from './Navbar.module.css';
 
-const Navbar: React.FC<{}> = () => {
-
+const Navbar = (): ReturnComponentType => {
     return (
-        <nav className={s.nav}>
-            <div className={`${s.item}`}>
-                <NavLink to='/profile' className={(navDate) =>
-                    navDate.isActive ? s.active : ''}>
-                    Profile
-                </NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to='/dialogs' className={(navDate) =>
-                    navDate.isActive ? s.active : ''}>Messages
-                </NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to='/users' className={(navDate) =>
-                    navDate.isActive ? s.active : ''}>Users
-                </NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to='/news'>News</NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to='/music'>Music</NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to='/settings'>Settings</NavLink>
+        <nav className={style.nav}>
+            <div className={style.nav__block}>
+
+                <div className={style.item}>
+                    <NavLink className={(navData) => navData.isActive ? style.activeLink : ''} to={PATH.PROFILE}>
+                       <span className={style.nav__text}>
+                           Profile
+                       </span>
+                    </NavLink>
+                </div>
+
+                <div className={`${style.item} ${style.active}`}>
+                    <NavLink className={(navData) => navData.isActive ? style.activeLink : ''} to={PATH.DIALOGS}>
+                        <span className={style.nav__text}>
+                        Dialogs
+                        </span>
+                    </NavLink>
+                </div>
+
+                <div className={`${style.item} ${style.active}`}>
+                    <NavLink className={(navData) => navData.isActive ? style.activeLink : ''} to={PATH.USERS}>
+                        <span className={style.nav__text}>
+                        Users
+                         </span>
+                    </NavLink>
+                </div>
+
+                <div className={style.item}>
+                    <NavLink className={(navData) => navData.isActive ? style.activeLink : ''} to={PATH.CHAT}>
+                        <span className={style.nav__text}>
+                        Chat
+                        </span>
+                    </NavLink>
+                </div>
+
+                <div className={style.item}>
+                    <NavLink className={(navData) => navData.isActive ? style.activeLink : ''} to={PATH.NEWS}>
+                        <span className={style.nav__text}>
+                        News
+                        </span>
+                    </NavLink>
+                </div>
+
             </div>
         </nav>
     )
 }
-export default Navbar;
+
+export default Navbar
