@@ -1,20 +1,24 @@
 import {Action, applyMiddleware, combineReducers, createStore} from "redux";
-import profileReducer from "./profileReducer/profile-reducer";
-import messagesReducer from "./messagesReducer/messagesReducer";
+
 import {usersReducer} from "./usersReducer/users-reducer";
-import {authReducer} from "./auth-reducer";
+
 import thunkMiddleWare, {ThunkAction} from "redux-thunk"
 import { reducer as formReducer } from 'redux-form'
 import {appReducer} from "./appReducer/app-reducer";
+import {newsReducer} from "./newsReducer/newsReducer";
+import {profileReducer} from "./profileReducer/profile-reducer";
+import {messagesReducer} from "./messagesReducer/messagesReducer";
+import {authReducer} from "./authReducer/authReducer";
 
 
 export const rootReducer = combineReducers({
     profilePage: profileReducer,
-    dialogsPage: messagesReducer,
+    messagesPage: messagesReducer,
     usersPage: usersReducer,
     auth: authReducer,
     form: formReducer,
-    app: appReducer
+    app: appReducer,
+    news: newsReducer,
 })
 export type AppStateType = ReturnType<typeof rootReducer>
 export type ReduxStoreType = typeof store

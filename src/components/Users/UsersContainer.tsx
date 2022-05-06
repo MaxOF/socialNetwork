@@ -12,7 +12,7 @@ import {
 
 import Users from "./Users";
 import ContentLoader from 'react-content-loader'
-import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {WithAuthRedirect} from "../../utils/hoc/WithAuthRedirect";
 import {compose} from "redux";
 
 

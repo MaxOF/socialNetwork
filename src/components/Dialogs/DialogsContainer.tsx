@@ -4,7 +4,7 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/store";
 import {compose, Dispatch} from "redux";
-import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {WithAuthRedirect} from "../../utils/hoc/WithAuthRedirect";
 
 
 type MapStatePropsType = {
