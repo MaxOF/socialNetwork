@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {AppStateType} from "../../redux/redux-store";
+import {AppStateType} from "../../redux/store";
 import {
     follow,
     getUsers,
@@ -8,7 +8,7 @@ import {
     toggleIsFollowingProgress,
     unfollow,
     UserType
-} from "../../redux/users-reducer";
+} from "../../redux/usersReducer/users-reducer";
 
 import Users from "./Users";
 import ContentLoader from 'react-content-loader'

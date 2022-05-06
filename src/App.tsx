@@ -11,7 +11,7 @@ import HeaderContainer from "./components/Header/Header.Container";
 import Login from "./components/Login/Login";
 import {initializeApp} from "./redux/app-reducer";
 import {useSelector} from "react-redux";
-import {AppStateType} from "./redux/redux-store";
+import {AppStateType} from "./redux/store";
 import Preloader from "./components/common/preloader/Preloader";
 
 

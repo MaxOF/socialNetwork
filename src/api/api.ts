@@ -1,4 +1,6 @@
 import axios from "axios";
+import {ReactElement} from "react";
+import {UserType} from "../redux/usersReducer/types";
 
 
 const instance = axios.create({
@@ -10,19 +12,21 @@ const instance = axios.create({
 })
 
 export const usersAPI = {
-    getUsers(currentPage: number, pageSize: number) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-            .then(response => response.data)
+    getUsers(currentPage: number = 1, pageSize: number = 5, term: string = "", friend: Nullable<boolean> = null) {
+        const endpoint = `users?page=${currentPage}&count=${pageSize}&term=${term}` + (friend === null ? '' : `&friend=${friend}`)
+        return instance.get<GetItemType>(endpoint)
+            .then(res => res.data)
     },
-    follow(userId: number) {
-        return instance.post(`follow/${userId}`)
+    follow(userId: string) {
+        const endpoint = `follow/${userId}`
+        return instance.post<APIResponseType>(endpoint)
+            .then(res => res.data)
     },
-    unfollow(userId: number) {
-        return instance.delete(`unfollow/${userId}`)
+    unfollow(userId: string) {
+        const endpoint = `follow/${userId}`
+        return instance.delete<APIResponseType>(endpoint)
+            .then(res => res.data)
     },
-    getUserProfile(userId: string) {
-        return instance.get(`profile/` + userId)
-    }
 }
 
 export const profileAPI = {
@@ -47,4 +51,26 @@ export const authAPI = {
     logout() {
         return instance.delete(`auth/login`)
     }
+}
+
+export type Nullable<T> = T | null
+export type ReturnComponentType = Nullable<ReactElement>;
+export type Undetectable<T> = T | undefined
+
+export enum ResultCodesEnum {
+    Success = 0,
+    Error = 1,
+    CaptchaIsRequired = 10,
+}
+
+export type APIResponseType<D = {}, RC = ResultCodesEnum> = {
+    data: D
+    resultCode: RC
+    messages: string[]
+}
+
+export type GetItemType = {
+    items: Array<UserType>
+    totalCount: number
+    error: Nullable<string>
 }
