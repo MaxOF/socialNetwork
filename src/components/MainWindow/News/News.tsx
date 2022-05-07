@@ -4,11 +4,12 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {NewsItem} from "./NewsItem/NewsItem";
 
-import {Preloader} from "../../../common";
+
 import {NewsType} from "../../../redux/newsReducer/types";
 import {getIsFetching, getNewsSelector} from "../../../selectors/selectors";
 import {ReturnComponentType} from "../../../api/api";
 import {NewsActions} from "../../../redux/newsReducer/actions/actions";
+import {Preloader} from "../../../common/Preloader/Preloader";
 
 
 const News = (): ReturnComponentType => {

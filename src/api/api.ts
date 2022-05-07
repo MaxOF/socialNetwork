@@ -42,7 +42,6 @@ export const profileAPI = {
             .then(res => res.data)
     },
     updateStatus(status: string) {
-        debugger
         const endpoint = `profile/status`
         return instance.put<APIResponseType>(endpoint, {status})
             .then(res => res.data)

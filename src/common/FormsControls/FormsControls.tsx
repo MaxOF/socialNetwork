@@ -6,7 +6,7 @@ import {Validator} from "redux-form/lib/Field";
 import {Nullable, ReturnComponentType} from "../../api/api";
 
 
-const FormControl: React.FC<FormControlPropsParamsType> = ({meta: {touched, error}, children}): ReturnComponentType => {
+export const FormControl: React.FC<FormControlPropsParamsType> = ({meta: {touched, error}, children}): ReturnComponentType => {
 
     const hasError = touched && error
     const styleError = hasError ? styles.error : ''

@@ -1,7 +1,6 @@
 import React, {FC} from "react";
 import style from "./Contact.module.scss";
 
-import {ContactsPropsType} from "./types";
 import {ReturnComponentType} from "../../../../../../../api/api";
 
 export const Contact: FC<ContactsPropsType> = ({contactTitle, contactValue}): ReturnComponentType => {
@@ -17,4 +16,9 @@ export const Contact: FC<ContactsPropsType> = ({contactTitle, contactValue}): Re
             }
         </div>
     )
+}
+
+export type ContactsPropsType = {
+    contactTitle: string
+    contactValue: string
 }

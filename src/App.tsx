@@ -9,16 +9,18 @@ import Login from "./components/Login/Login";
 import {connect, Provider} from "react-redux";
 import {AppStateType, store} from "./redux/store";
 
-import {Loading, Preloader} from "./common";
 import {initializeApp} from "./redux/appReducer/thunks/thunks";
 import {getInitializedAppSelector} from "./selectors/selectors";
 import Header from "./components/Header/Header";
 import News from "./components/MainWindow/News/News";
-import UsersPage from "./components/MainWindow/Users/UsersPage";
+import {UsersPage} from "./components/MainWindow/Users/UsersPage";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
-import Footer from "./components/Footer/Footer";
-import ProfileContainer from "./components/MainWindow/Profile/ProfileContainer";
+
+
 import DialogsContainer from "./components/MainWindow/Dialogs/DialogsContainer";
+import {Preloader} from "./common/Preloader/Preloader";
+import {Loading} from "./common/Loading/Loading";
+import {ProfileContainer} from "./components/MainWindow/Profile/ProfileContainer";
 
 
 export enum PATH {
@@ -66,7 +68,6 @@ class App extends React.Component<AppContainerType, AppContainerType> {
                         <Route path={PATH.PAGE_NOTE_FOUND} element={<PageNotFound/>}/>
                     </Routes>
                 </div>
-                <Footer/>
             </main>
         )
     }

@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {useNavigate, useSearchParams} from "react-router-dom";
 
-import {Paginator} from "../../../common";
+
 import {FilterType, UserType} from "../../../redux/usersReducer/types";
 import {
     getCurrentPage,
@@ -19,6 +19,7 @@ import {
 } from "../../../selectors/selectors";
 import {requestUsers} from "../../../redux/usersReducer/thunks/thunks";
 import {ReturnComponentType} from "../../../api/api";
+import {Paginator} from "../../../common/Paginator/Paginator";
 
 
 export const Users: React.FC = (): ReturnComponentType => {
@@ -38,7 +39,7 @@ export const Users: React.FC = (): ReturnComponentType => {
     const filter: FilterType = useSelector(getUsersFilter)
     const users: Array<UserType> = useSelector(getUsers)
     const followingInProgress: Array<string> = useSelector(getFollowingInProgress)
-    const pageValue: number = 1
+    const pageValue: number = 1;
 
     const onPageChanged = (pageNumber: number): void => {
         dispatch(requestUsers(pageNumber, pageSize, filter))
@@ -85,9 +86,9 @@ export const Users: React.FC = (): ReturnComponentType => {
 
     return (
         <div className={style.users}>
-            <UsersSearchForm
-                onFilterChanged={onFilterChanged}
-            />
+            {/*<UsersSearchForm*/}
+            {/*    onFilterChanged={onFilterChanged}*/}
+            {/*/>*/}
             <div className={style.searchResult}>
                 {
                     users.map(user => {

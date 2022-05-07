@@ -6,6 +6,6 @@ export const initializeApp = () => (dispatch: Dispatch<any>) => {
     const promise = dispatch(getAuthUserData())
     Promise.all([promise])
         .then(() => {
-            dispatch(AppAction.initializedSuccess())
+           dispatch(AppAction.initializedSuccess())
         })
 }

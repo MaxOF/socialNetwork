@@ -1,12 +1,13 @@
 import React from 'react';
 import style from "../ProfileInfo.module.scss";
 
-import {ProfileEditPropsType} from "./types";
-import {ProfileData} from "./ProfileData";
-import {ProfileDataFormReduxForm} from "./ProfileDataForm";
-import {ReturnComponentType} from "../../../../../api/api";
 
-const ProfileEdit: React.FC<ProfileEditPropsType> = ({
+import {ReturnComponentType} from "../../../../../api/api";
+import {ProfileType} from "../../../../../redux/profileReducer/types";
+import {ProfileDataFormReduxForm} from "./ProfileDataForm/ProfileDataForm";
+import {ProfileData} from "./ProfileData/ProfileData";
+
+export const ProfileEdit: React.FC<ProfileEditPropsType> = ({
                                                          editMode,
                                                          profile,
                                                          onSubmit,
@@ -41,4 +42,11 @@ const ProfileEdit: React.FC<ProfileEditPropsType> = ({
     )
 }
 
-export default ProfileEdit
+export type ProfileEditPropsType = {
+    editMode: boolean
+    profile: ProfileType
+    onSubmit: any
+    isOwner: boolean
+    setEditModeHandler: () => void
+    disableViewMode: () => void
+}

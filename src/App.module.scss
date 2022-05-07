@@ -1,3 +1,5 @@
+@import 'assets/styles/SASS/variables';
+
 .appContent {
     display: flex;
     align-items: center;
@@ -11,13 +13,10 @@
         padding-top: 10px;
 
         width: 100%;
-        background-color: #e5cba1;
+        background-color: $backgroundPrimaryColor;
         margin-bottom: 5px;
         min-height: 750px;
 
-        border-right: 3px solid #dcb87e;
-        border-left: 3px solid #dcb87e;
-        border-bottom: 3px solid #dcb87e;
     }
 
 }

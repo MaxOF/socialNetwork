@@ -2,11 +2,12 @@ import style from "./ProfileData.module.scss";
 
 import React from "react";
 
-import {Preloader} from "../../../../../../common";
-import {ContactsType} from "../../../../../../redux/profileReducer/types";
-import {ProfileDataPropsType} from "./types";
-import {Contact} from "./Contact";
+
+import {ContactsType, ProfileType} from "../../../../../../redux/profileReducer/types";
+
 import {ReturnComponentType} from "../../../../../../api/api";
+import {Preloader} from "../../../../../../common/Preloader/Preloader";
+import {Contact} from "./Contact/Contact";
 
 export const ProfileData: React.FC<ProfileDataPropsType> = ({profile, isOwner, goToEditMode}): ReturnComponentType => {
 
@@ -87,4 +88,10 @@ export const ProfileData: React.FC<ProfileDataPropsType> = ({profile, isOwner, g
             </div>
         </>
     )
+}
+
+export type ProfileDataPropsType = {
+    profile: ProfileType
+    isOwner: boolean
+    goToEditMode?: () => void
 }

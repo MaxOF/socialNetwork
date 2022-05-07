@@ -21,7 +21,6 @@ export const rootReducer = combineReducers({
     news: newsReducer,
 })
 export type AppStateType = ReturnType<typeof rootReducer>
-export type ReduxStoreType = typeof store
 
 export const store = createStore(rootReducer, applyMiddleware(thunkMiddleWare));
 
@@ -33,5 +32,3 @@ export type BaseThunkType<A extends Action, RT = Promise<void>> = ThunkAction<RT
 
 // @ts-ignore
 window.store = store
-
-export default store;

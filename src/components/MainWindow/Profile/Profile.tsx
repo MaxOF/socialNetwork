@@ -3,9 +3,10 @@ import style from "./Profile.module.scss"
 
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
-import {ProfilePropsType} from "./types";
-import {ProfileInfo} from "./ProfileInfo";
+
 import {ReturnComponentType} from "../../../api/api";
+import {ProfilePropsType} from "./ProfileContainer";
+import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
 const Profile: React.FC<ProfilePropsType> = ({profile, status, updateUserStatus, isOwner, savePhoto, saveProfile}): ReturnComponentType => {
 

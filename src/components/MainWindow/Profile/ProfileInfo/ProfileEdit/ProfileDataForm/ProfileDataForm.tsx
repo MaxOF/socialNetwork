@@ -5,9 +5,9 @@ import {createField, Input} from "../../../../../../common/FormsControls/FormsCo
 import {InjectedFormProps, reduxForm} from "redux-form";
 
 import {ProfileType} from "../../../../../../redux/profileReducer/types";
-import {Preloader} from "../../../../../../common";
-import {ProfileDataFormPropsType} from "./types";
+
 import {ReturnComponentType} from "../../../../../../api/api";
+import {Preloader} from "../../../../../../common/Preloader/Preloader";
 
 
 export const ProfileDataForm: FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({
@@ -70,3 +70,8 @@ export const ProfileDataForm: FC<InjectedFormProps<ProfileType, ProfileDataFormP
 }
 
 export const ProfileDataFormReduxForm = reduxForm<ProfileType, ProfileDataFormPropsType>({form: 'edit-profile'})(ProfileDataForm)
+
+export type ProfileDataFormPropsType = {
+    profile: ProfileType
+    goToEditMode?: () => void
+}

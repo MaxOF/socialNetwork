@@ -65,7 +65,7 @@ const AddNewPostForm: React.FC<InjectedFormProps<AddNewPostFormType>> = ({
     )
 }
 
-const ReduxAddNewPostForm = reduxForm<AddNewPostFormType>({form: "ProfileAddNewPostForm"})(AddNewPostForm)
+export const ReduxAddNewPostForm = reduxForm<AddNewPostFormType>({form: "ProfileAddNewPostForm"})(AddNewPostForm)
 
 //types
 

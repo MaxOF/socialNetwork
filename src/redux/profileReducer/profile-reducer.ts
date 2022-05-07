@@ -1,12 +1,12 @@
-import {Nullable, profileAPI, usersAPI} from "../../api/api";
+import {Nullable} from "../../api/api";
 
 import {ActionProfileTypes, initialStateProfileType, PostType, ProfileType} from "./types";
 import {ProfileReducerEnum} from "./constants";
 
 export const initialProfileState = {
     posts: [
-        {message: "Hi all. My name is Oleg and. I am a front-end developer", likesCount: 12, id: 1},
-        {message: "Dinosaurs are great. I love them so much", likesCount: 17, id: 2}
+        {message: "Hey, how is it going?", likesCount: 12, id: 1},
+        {message: "If you are a frontend dev, follow me", likesCount: 17, id: 2}
     ] as Array<PostType>,
     profile: null as Nullable<ProfileType>,
     status: "",

@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 
 
-import {MapStateToPropsProfileType, ProfileContainerPropsType} from "./types";
+
 import {AppStateType} from "../../../redux/store";
 import {
     getAuthAuthorizedUserIDSelector, getAuthIsAuthSelector,
@@ -18,9 +18,10 @@ import {
     saveProfile,
     updateUserStatus
 } from "../../../redux/profileReducer/thunks/thunks";
-import {withRouter2} from "../../../utils/hoc/WithRouter";
+import {InjectedProps, withRouter2} from "../../../utils/hoc/WithRouter";
 import {withAuthRedirect} from "../../../utils/hoc/WithAuthRedirect";
 import {Nullable} from "../../../api/api";
+import {ProfileType} from "../../../redux/profileReducer/types";
 
 class ProfileAPIContainer extends React.Component<ProfileContainerPropsType> {
 
@@ -77,7 +78,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsProfileType => {
     }
 }
 
-const ProfileContainer = compose<ComponentType>(
+export const ProfileContainer = compose<ComponentType>(
     connect(mapStateToProps, {
         getUserProfile,
         getUserStatus,
@@ -89,4 +90,33 @@ const ProfileContainer = compose<ComponentType>(
     withAuthRedirect
 )(ProfileAPIContainer)
 
-export default ProfileContainer
+
+
+
+export type MapStateToPropsProfileType = {
+    profile: ProfileType
+    isAuth: boolean
+    status: string
+    authorizedUserID: Nullable<string>
+}
+
+export type MapDispatchToProps = {
+    getUserProfile: (userId: Nullable<string>) => void
+    getUserStatus: (userId: Nullable<string>) => void
+    updateUserStatus: (status: string) => void
+    savePhoto: (file: File) => void
+    saveProfile: (formData: ProfileType) => Promise<any>
+}
+
+export type ProfileContainerPropsType = MapStateToPropsProfileType & MapDispatchToProps & InjectedProps
+
+//Profile=========
+
+export type ProfilePropsType = {
+    profile: ProfileType
+    status: string
+    updateUserStatus: (status: string) => void
+    isOwner: boolean
+    savePhoto: (file: File) => void
+    saveProfile: (formData: ProfileType) => Promise<any>
+}

@@ -34,13 +34,6 @@ const Navbar = (): ReturnComponentType => {
                     </NavLink>
                 </div>
 
-                <div className={style.item}>
-                    <NavLink className={(navData) => navData.isActive ? style.activeLink : ''} to={PATH.CHAT}>
-                        <span className={style.nav__text}>
-                        Chat
-                        </span>
-                    </NavLink>
-                </div>
 
                 <div className={style.item}>
                     <NavLink className={(navData) => navData.isActive ? style.activeLink : ''} to={PATH.NEWS}>

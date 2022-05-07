@@ -3,12 +3,14 @@ import style from "./ProfileInfo.module.scss"
 
 import avatarDefault from '../../../../assets/images/avatar_for_profile.jpg'
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
-import ProfileEdit from "./ProfileEdit/ProfileEdit";
 
-import {Preloader} from "../../../../common";
+
+
 import {ProfileType} from "../../../../redux/profileReducer/types";
-import {ProfileInfoPropsType} from "./types";
+
 import {ReturnComponentType} from "../../../../api/api";
+import {Preloader} from "../../../../common/Preloader/Preloader";
+import {ProfileEdit} from "./ProfileEdit/ProfileEdit";
 
 export const ProfileInfo: React.FC<ProfileInfoPropsType> = ({
                                                          profile,
@@ -104,4 +106,13 @@ export const ProfileInfo: React.FC<ProfileInfoPropsType> = ({
             <hr/>
         </div>
     )
+}
+
+export type ProfileInfoPropsType = {
+    profile: ProfileType
+    status: string
+    updateUserStatus: (status: string) => void
+    isOwner: boolean
+    savePhoto: (file: File) => void
+    saveProfile: (formData: ProfileType) => Promise<any>
 }

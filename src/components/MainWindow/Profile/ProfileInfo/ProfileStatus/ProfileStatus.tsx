@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import style from './ProfileStatus.module.scss'
-import {ProfileStatusPropsType, stateProfileStateType} from "./types";
+
 
 export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
 
@@ -71,4 +71,16 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
             </div>
         )
     }
+}
+
+export type ProfileStatusPropsType = {
+    status: string
+    updateUserStatus: (status: string) => void
+    isOwner: boolean
+}
+
+export type stateProfileStateType = {
+    editMode: boolean
+    status: string
+    isOwner: boolean
 }

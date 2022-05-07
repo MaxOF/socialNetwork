@@ -4,13 +4,14 @@ import style from './Users.module.scss'
 import {useSelector} from "react-redux";
 import {Users} from './Users';
 
-import {Preloader} from "../../../common";
+
 import {getIsFetching} from "../../../selectors/selectors";
 import {ReturnComponentType} from "../../../api/api";
+import {Preloader} from "../../../common/Preloader/Preloader";
 
 
 
-const UsersPage: React.FC = (): ReturnComponentType => {
+export const UsersPage: React.FC = (): ReturnComponentType => {
 
     const isFetching: boolean = useSelector(getIsFetching)
 
@@ -22,4 +23,4 @@ const UsersPage: React.FC = (): ReturnComponentType => {
     )
 }
 
-export default UsersPage
+
